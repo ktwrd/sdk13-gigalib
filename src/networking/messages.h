@@ -83,6 +83,10 @@ public:
 	virtual INetChannel *GetNetChannel( void ) const OVERRIDE	{ return m_pNetChan; }
 	virtual const char *ToString( void ) const OVERRIDE;
 
+	virtual bool	BIncomingMessageForProcessing(double dblNetTime, int numBytes) override { return 0; }
+
+	virtual size_t			GetSize() const override { return 0; }
+
 private:
 	bool m_bReliable;
 	INetChannel *m_pNetChan;

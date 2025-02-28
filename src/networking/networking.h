@@ -26,9 +26,9 @@
     set(VCPKG_C_FLAGS "-D_ITERATOR_DEBUG_LEVEL=0")
     set(VCPKG_CXX_FLAGS "-D_ITERATOR_DEBUG_LEVEL=0")
     */
-    #pragma comment( lib, "../shared/sdk13-gigalib/bin/libprotobufd.lib" )
+    // #pragma comment( lib, "../shared/sdk13-gigalib/bin/libprotobufd.lib" )
 #else
-    #pragma comment( lib, "../shared/sdk13-gigalib/bin/libprotobuf.lib" )
+    // #pragma comment( lib, "../shared/sdk13-gigalib/bin/libprotobuf.lib" )
 #endif
 
 #endif

@@ -21,6 +21,7 @@ void FlushContent(FLUSH_CUSTOM_CONTENT FLUSH)
     }
     
     const char* modpath = _modpath.GetString();
+	modpath = "C:\\Work\\OpenFortress\\OpenFortress\\game\\open_fortress";
     
     V_StripTrailingSlash( (char*)modpath );
     
@@ -44,7 +45,7 @@ void FlushContent(FLUSH_CUSTOM_CONTENT FLUSH)
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
         std::string narrow_mpath = converter.to_bytes(mpath.c_str());
         // std::wstring wide = converter.from_bytes(narrow_utf8_source_string);
-#ifdef SDKSENTRY
+#ifdef _SDKSENTRY
         std::string msg = fmt::format(FMT_STRING("{:s}"), narrow_mpath.c_str());
         const char* smsg = msg.c_str();
 

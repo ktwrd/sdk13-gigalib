@@ -651,9 +651,9 @@ CEngineDetours::CEngineDetours()
     // ONLY run these on dedis!
     if (engine->IsDedicatedServer())
     {
-        CNetChan__ProcessPacket_Init();
-        CBaseServer__RejectConnection_Init();
-        CBaseServer__ConnectClient_Init();
+        // CNetChan__ProcessPacket_Init();
+        // CBaseServer__RejectConnection_Init();
+        // CBaseServer__ConnectClient_Init();
     }
 }
 
@@ -898,9 +898,9 @@ void win32_HARDENING() {
 CEngineDetours::CEngineDetours()
 {
 #ifdef BLACKLISTS
-    CClientState__FullConnect_Init();
+    // CClientState__FullConnect_Init();
 #endif
-    CNetChan__Shutdown_Init();
+    // CNetChan__Shutdown_Init();
 
 #ifdef _WIN32
     // win32_HARDENING();
