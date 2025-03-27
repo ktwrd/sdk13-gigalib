@@ -357,17 +357,24 @@ void CNetChan__ProcessPacket_Init()
 
     // unique string: "corrupted packet"
     // that gets you ProcessPacketHeader, which only xrefs with ProcessPacket
-    #ifdef _WIN32
+    #ifdef PLATFORM_WINDOWS
 
         // Signature for sub_101C9DF0:
         // 55 8B EC 51 53 56 8B F1 57 8B 7D 08
         // CNetChan__ProcessPacket->patternSize    = 12;
         // CNetChan__ProcessPacket->pattern        = "\x55\x8B\xEC\x51\x53\x56\x8B\xF1\x57\x8B\x7D\x08";
 
-        // Signature for FUN_101a7880
+        #ifdef PLATFORM_64BITS
+        // Signature for UndefinedFunction_1801d0330 (referenced by FUN_1801d07c0)
+        // 40 88 44 24 18 48 89 54 24 10 53 56 40 55 40 56 40 57 48 83 ec 70 48 8d 7a 20 40 33 ed 48 8b f2 48 8b f1
+        CNetChan__ProcessPacket->patternSize = 35;
+        CNetChan__ProcessPacket->pattern = "\x40\x88\x44\x24\x18\x48\x89\x54\x24\x10\x53\x56\x40\x55\x40\x56\x40\x57\x48\x83\xEC\x70\x48\x8D\x7A\x20\x40\x33\xED\x48\x8B\xF2\x48\x8B\xF1";
+        #else
+        // Signature for FUN_101a7880 (referenced by FUN_101a7bd0)
         // 55 8B EC 83 EC 08 53 56 8B 75 08 83 7E 24 00 8D 5E 1C 57 8B F9
         CNetChan__ProcessPacket->patternSize = 21;
         CNetChan__ProcessPacket->pattern = "\x55\x8B\xEC\x83\xEC\x08\x53\x56\x8B\x75\x08\x83\x7E\x24\x00\x8D\x5E\x1C\x57\x8B\xF9";
+        #endif
 
     #else
         // Signature for _ZN8CNetChan13ProcessPacketEP11netpacket_sb:
