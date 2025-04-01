@@ -77,10 +77,17 @@ bool initEngineSpew()
 //  static constexpr const char*    pattern     = "\x55\x89\xE5\x57\x56\x53\x83\xEC\x2C\x8B\x7D\x08\x8B\x75\x0C\xE8\x2A\x2A\x2A\x2A";
 //  static constexpr size_t         patternSize = 20;
 //#else
+#ifdef PLATFORM_64BITS
+	// Signature for FUN_0069b3e0:
+	// 55 48 8d 0d ?? ?? ?? ?? 48 89 e5 41 57 41 56 49 89 fe 41 55 49 89 f5 41 54 4c 8d 25 ?? ?? ?? ??
+	static constexpr const char* pattern = "\x55\x48\x8D\x0D\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xFE\x41\x55\x49\x89\xF5\x41\x54\x4C\x8D\x25\x2A\x2A\x2A\x2A";
+	static constexpr size_t         patternSize = 32;
+#else
     // Signature for sub_5742E0:
     // 55 89 E5 57 56 53 83 EC 2C 8B 7D 08 8B 75 0C E8 ? ? ? ?
     static constexpr const char*    pattern     = "\x55\x89\xE5\x57\x56\x53\x83\xEC\x2C\x8B\x7D\x08\x8B\x75\x0C\xE8\x2A\x2A\x2A\x2A";
     static constexpr size_t         patternSize = 20;       
+#endif
 #endif
 
     GetSpewPtr = memy::FindPattern(engine_bin, pattern, patternSize, 0);
